@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "callaway-brandon-a1-textbasedgame", "callaway-brandon-a1-textbasedgame.csproj", "{B0CAADAB-E9EC-4114-A2AE-818F44FBDBBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0CAADAB-E9EC-4114-A2AE-818F44FBDBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CAADAB-E9EC-4114-A2AE-818F44FBDBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CAADAB-E9EC-4114-A2AE-818F44FBDBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CAADAB-E9EC-4114-A2AE-818F44FBDBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D032B691-F95A-41C0-A612-596247BB6D40}
+	EndGlobalSection
+EndGlobal
