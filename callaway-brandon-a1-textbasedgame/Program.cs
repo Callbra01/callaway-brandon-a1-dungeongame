@@ -99,7 +99,7 @@ if (roomCount == 1)
                 roomCount = 2;
                 playerGold += 25;
                 Console.WriteLine($"\n{playerName} the {playerClass} defeated the {opponentName}!!");
-                Console.WriteLine($"\n {playerName} now has {playerGold} gold, and {playerHP}hp!");
+                Console.WriteLine($"\n{playerName} now has {playerGold} gold, and {playerHP}hp!");
                 Console.WriteLine("type anything to continue");
                 Console.ReadLine();
             }
@@ -152,28 +152,56 @@ if (roomCount == 2)
 
     if (playerInput == "left")
     {
-        roomCount = 3;
+        roomCount = 4;
     }
     else if (playerInput == "right")
     {
-        roomCount = 4;
+        roomCount = 3;
     }
     else
     {
         roomCount = 666;
     }
-}// Player chose the door to their left in the last room
-if (roomCount == 3)
-{
-    Console.Clear();
-    Console.WriteLine("NEXT ROOM");
 }
 
 // Player chose the hole in the wall to their right in the last room
 // This room contains a chest
+if (roomCount == 3)
+{
+    Console.Clear();
+    Console.WriteLine($"{playerName} stumbles through the rubble... you find a decrepit chest...");
+    Console.WriteLine("Do you choose to open it? type \"yes\" or \"no\"");
+    playerInput = Console.ReadLine();
+    if (playerInput == "yes")
+    {
+        playerGold += 100;
+        playerHP += 75;
+        roomCount = 4;
+        Console.WriteLine("You feel refreshed... and your pockets feel heavier!");
+        Console.WriteLine($"{playerName} now has {playerHP}hp and {playerGold} gold!");
+        Console.WriteLine($"{playerName} heads back through the hole in the wall\ntype anything to continue");
+        Console.ReadLine();
+    }
+    else
+    {
+        roomCount = 4;
+        Console.WriteLine($"{playerName} the {playerClass} takes no risks... \ntype anything to head back");
+        Console.ReadLine();
+    }
+}
+
+// Player chose the door to their left in the last room / found the chest in room 3
+// This is the store room
+// Player requires the sword to beat boss
 if (roomCount == 4)
 {
     Console.Clear();
+    Console.WriteLine("you stumble upon an old blind man, he begs you trade him 120 gold for his sword...");
+    Console.WriteLine($"you currently have {playerGold} gold, you can attempt to haggle only once");
+    Console.WriteLine("type \"haggle amount\"");
+    playerInput = Console.ReadLine();
+    // TODO PARSE HAGGLE STRING AND IF OVER A CERTAIN AMOUNT GIVE PLAYER ITEM
+    
 }
 
 // Failure room, ends game
