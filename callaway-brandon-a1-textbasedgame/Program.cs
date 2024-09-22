@@ -1,4 +1,4 @@
-﻿// Initialize and Declare player vars
+﻿// Declare and initialize player vars
 string playerInput = "";
 string playerName = "";
 string playerClass = "";
@@ -6,13 +6,14 @@ int playerDMG = 0;
 int playerHP = 100;
 int playerGold = 0;
 bool playerCanFlee = false;
+bool playerSelectionInvalid = false;
 
-// Initialize and Declare opponent vars
+// Declare and initialize opponent vars
 string opponentName = "";
 int opponentHP = 0;
 int opponentDMG = 0;
 
-// Initialize and Declare class-specific vars
+// Declare and initialize class-specific vars
 int warriorDMG = 35;
 int warriorHP = 150;
 int wizardDMG = warriorDMG;
@@ -20,20 +21,22 @@ int wizardHP = 120;
 int wretchDMG = 65;
 int wretchHP = 85;
 
-// Initialize and Declare room tracking var
+// Declare and initialize room tracking var
 int roomCount = 0;
 
 // Ask player for name and get input
-Console.WriteLine("enter name:");
+Console.WriteLine("Speak your name stranger...");
 playerName = Console.ReadLine();
 
-// Tell player class information and ask to choose
-Console.WriteLine("in this land, warriors: wizards: wretchs");
-Console.WriteLine("pick");
+// Tell player class information and ask player to choose
+Console.Clear();
+Console.WriteLine($"{playerName}, choose your class,\n\nwarriors: brutal soldiers of Hermak'ul\nwizards: mystical mages under the following of Azou'laz" +
+    "\nwretchs: miserable draugrs, followers of no god");
+Console.WriteLine("\ntype \"warrior\", \"wizard\", or \"wretch\" to select a class");
 playerInput = Console.ReadLine();
 
 // If player chooses a valid class, set playerVars to corresponding classVars, and roomCount++
-// Else if player types an invalid choice, set roomCount to 0 (resulting in ending the game)
+// Else if player types an invalid choice, set roomCount to 666 (resulting in ending the game)
 if (playerInput == "warrior")
 {
     playerClass = playerInput;
@@ -61,11 +64,12 @@ else if (playerInput == "wretch")
 }
 else
 {
+    playerSelectionInvalid = true;
     roomCount = 666;
 }
 
 // First room/scene
-if (roomCount == 1)
+if (roomCount == 1 && playerSelectionInvalid == false)
 {
     // Give opponent hp value, damage value, and name, inform player of playername and class choice
     opponentHP = 60;
@@ -82,7 +86,7 @@ if (roomCount == 1)
     playerInput = Console.ReadLine();
 
     // if player attacks, inform player of relevant information
-    // If opponent is still alive, attack the player again
+    // If opponent is still alive, opponent attacks, followed by player attacking
     if (playerInput == "attack")
     {
         opponentHP -= playerDMG;
@@ -134,11 +138,16 @@ if (roomCount == 1)
             roomCount = 666;
         }
     }
+    // If player gives up, player response is thus valid, prompt different text based off class
+    else if (playerInput == "sacrifice")
+    {
+        roomCount = 666;
+    }
     // If player input is invalid, end the game
     else
     {
-        Console.WriteLine($"{playerName}'s foolishness has rendered their life forfiet.");
         roomCount = 666;
+        playerSelectionInvalid = true;
     }
 }
 
@@ -160,6 +169,7 @@ if (roomCount == 2)
     }
     else
     {
+        playerSelectionInvalid = true;
         roomCount = 666;
     }
 }
@@ -196,17 +206,47 @@ if (roomCount == 3)
 if (roomCount == 4)
 {
     Console.Clear();
-    Console.WriteLine("you stumble upon an old blind man, he begs you trade him 120 gold for his sword...");
-    Console.WriteLine($"you currently have {playerGold} gold, you can attempt to haggle only once");
-    Console.WriteLine("type \"haggle amount\"");
+    Console.WriteLine($"{playerName} stumble upon an old blind man, he begs you trade him 120 gold for his sword...");
+    Console.WriteLine($"you currently have {playerGold} gold\n you can attempt to haggle only once");
+    Console.WriteLine("\ntype the amount you would like to haggle for. \"100\", for example");
     playerInput = Console.ReadLine();
-    // TODO PARSE HAGGLE STRING AND IF OVER A CERTAIN AMOUNT GIVE PLAYER ITEM
-    
+
+    if (int.Parse(playerInput) >= 90 && playerGold >= 90)
+    {
+        Console.WriteLine("You have acquired: \"Blind Mans Folley, Greatsword\"");
+        playerDMG = 1337;
+        roomCount = 5;
+    }
+    else
+    {
+        Console.WriteLine("The old man suffers a heart attack, and upon falling, shatters the brittle sword");
+        roomCount = 5;
+    }
+}
+
+if (roomCount == 5)
+{
+
 }
 
 // Failure room, ends game
 if (roomCount == 666)
 {
-    Console.WriteLine("failure");
-    Console.ReadLine();
+    Console.Clear();
+    if(playerSelectionInvalid)
+    {
+        Console.WriteLine("As you stumble your words, you fall dead on the spot");
+        Console.ReadLine();
+    }
+    else
+    {
+        if (playerClass == "wretch")
+        {
+            Console.WriteLine("You sacrifice your life for no god...");
+        }
+        else
+        {
+            Console.WriteLine("You sacrifice your life for your god...");
+        }
+    }
 }
