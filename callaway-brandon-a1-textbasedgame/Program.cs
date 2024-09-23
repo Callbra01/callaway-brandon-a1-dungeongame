@@ -34,7 +34,7 @@ Console.WriteLine("\n ______   ___ ___ ______  _______ _______ _______ ______   
     " |:  1   |:  1   |:  |   |   |:  1   |:  |       |:  1   |:  1   |:  |   |:  |:  1    |:  | |:  |   |:  |  \n|::.. . /|::.. . |::.|   |::.. . |::.. . |::.." +
     " . |::.|   |   |::.. . |::.|       |::.. . |::.. . |::.|   |::.|::.. . /|::.| |::.|   |::.|  \n`------' `-------`--- ---`-------`-------`-------`--- ---'  " +
     " `-------`---'       `-------`-------`---'   `---`------' `---' `---'   `---'");
-Console.WriteLine("Speak your name stranger...");
+Console.WriteLine("\nSpeak your name stranger...");
 playerName = Console.ReadLine();
 
 // Tell player class information and ask player to choose
