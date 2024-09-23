@@ -26,8 +26,14 @@ string classBoss = "";
 // Declare and initialize room tracking var
 int roomCount;
 
-// Ask player for name and get input
-Console.WriteLine("\n ______   ___ ___ ______  _______ _______ _______ ______      _______ _______     _______ ___ ___ _______ ___ ______   ___ _______ ___ ___ \n|   _  \\ |   Y   |   _  \\|   _   |   _   |   _   |   _  \\    |   _   |   _   |   |   _   |   Y   |   _   |   |   _  \\ |   |       |   Y   |\n|.  |   \\|.  |   |.  |   |.  |___|.  1___|.  |   |.  |   |   |.  |   |.  1___|   |.  1___|.  |   |.  1   |.  |.  |   \\|.  |.|   | |   1   |\n|.  |    |.  |   |.  |   |.  |   |.  __)_|.  |   |.  |   |   |.  |   |.  __)     |.  |___|.  |   |.  ____|.  |.  |    |.  `-|.  |-'\\_   _/ \n|:  1    |:  1   |:  |   |:  1   |:  1   |:  1   |:  |   |   |:  1   |:  |       |:  1   |:  1   |:  |   |:  |:  1    |:  | |:  |   |:  |  \n|::.. . /|::.. . |::.|   |::.. . |::.. . |::.. . |::.|   |   |::.. . |::.|       |::.. . |::.. . |::.|   |::.|::.. . /|::.| |::.|   |::.|  \n`------' `-------`--- ---`-------`-------`-------`--- ---'   `-------`---'       `-------`-------`---'   `---`------' `---' `---'   `---'");
+// Display intro splash screen and ask for player name
+Console.WriteLine("\n ______   ___ ___ ______  _______ _______ _______ ______      _______ _______     _______ ___ ___ _______ ___ ______   ___ _______ ___ ___ " +
+    "\n|   _  \\ |   Y   |   _  \\|   _   |   _   |   _   |   _  \\    |   _   |   _   |   |   _   |   Y   |   _   |   |   _  \\ |   |       |   Y   |\n|.  |  " +
+    " \\|.  |   |.  |   |.  |___|.  1___|.  |   |.  |   |   |.  |   |.  1___|   |.  1___|.  |   |.  1   |.  |.  |   \\|.  |.|   | |   1   |\n|.  |    |.  |   |." +
+    "  |   |.  |   |.  __)_|.  |   |.  |   |   |.  |   |.  __)     |.  |___|.  |   |.  ____|.  |.  |    |.  `-|.  |-'\\_   _/ \n|:  1    |:  1   |:  |   |:  1  " +
+    " |:  1   |:  1   |:  |   |   |:  1   |:  |       |:  1   |:  1   |:  |   |:  |:  1    |:  | |:  |   |:  |  \n|::.. . /|::.. . |::.|   |::.. . |::.. . |::.." +
+    " . |::.|   |   |::.. . |::.|       |::.. . |::.. . |::.|   |::.|::.. . /|::.| |::.|   |::.|  \n`------' `-------`--- ---`-------`-------`-------`--- ---'  " +
+    " `-------`---'       `-------`-------`---'   `---`------' `---' `---'   `---'");
 Console.WriteLine("Speak your name stranger...");
 playerName = Console.ReadLine();
 
@@ -45,7 +51,6 @@ if (playerInput == "warrior")
     playerClass = playerInput;
     playerDMG = warriorDMG;
     playerHP = warriorHP;
-    playerCanFlee = false;
     classBoss = "Azou\'laz, God of the ethereal";
 
     roomCount = 1;
@@ -55,7 +60,6 @@ else if (playerInput == "wizard")
     playerClass = playerInput;
     playerDMG = wizardDMG;
     playerHP = wizardHP;
-    playerCanFlee = false;
     classBoss = "Hermak'ul, God of fury";
 
     roomCount = 1;
@@ -65,7 +69,6 @@ else if (playerInput == "wretch")
     playerClass = playerInput;
     playerDMG = wretchDMG;
     playerHP = wretchHP;
-    playerCanFlee = true;
     classBoss = "Ul'yaakir, God of puppets";
 
     roomCount = 1;
@@ -121,7 +124,6 @@ if (roomCount == 1)
         else
         {
             // This line is for wretches, as their damage one shots enemies
-            Console.Clear();
             if (opponentHP <= 0)
             {
                 roomCount = 2;
@@ -229,7 +231,9 @@ if (roomCount == 4)
 
     if (int.Parse(playerInput) >= 90 && playerGold >= 90)
     {
-        Console.WriteLine($"{playerName} has acquired: \"Blind Mans Folley, Greatsword\"");
+        Console.Clear();
+        Console.WriteLine($"{playerName} has acquired: ~~\"Blind Mans Folley, Greatsword\"~~");
+        Console.WriteLine("\n...you hear whispers of evil's bane emanating from the edge of the blade....");
         playerDMG = 1337;
         roomCount = 5;
     }
@@ -336,4 +340,3 @@ if (roomCount == 666)
         }
     }
 }
-
