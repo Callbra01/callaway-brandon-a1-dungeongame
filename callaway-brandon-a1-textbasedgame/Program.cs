@@ -7,6 +7,7 @@ int playerHP = 100;
 int playerGold = 0;
 bool playerCanFlee = false;
 bool playerSelectionInvalid = false;
+bool playerHasSacrificed = false;
 
 // Declare and initialize opponent vars
 string opponentName;
@@ -43,6 +44,7 @@ if (playerInput == "warrior")
     playerClass = playerInput;
     playerDMG = warriorDMG;
     playerHP = warriorHP;
+    playerCanFlee = false;
     classBoss = "Azou\'laz, God of the ethereal";
 
     roomCount = 1;
@@ -52,6 +54,7 @@ else if (playerInput == "wizard")
     playerClass = playerInput;
     playerDMG = wizardDMG;
     playerHP = wizardHP;
+    playerCanFlee = false;
     classBoss = "Hermak'ul, God of fury";
 
     roomCount = 1;
@@ -142,13 +145,14 @@ if (roomCount == 1)
         else
         {
             Console.WriteLine($"{playerClass}'s can not flee.");
-            Console.WriteLine();
+            Console.ReadLine();
             roomCount = 666;
         }
     }
     // If player gives up, player response is thus valid, prompt different text based off class
     else if (playerInput == "sacrifice")
     {
+        playerHasSacrificed = true;
         roomCount = 666;
     }
     // If player input is invalid, end the game
@@ -293,6 +297,7 @@ if (roomCount == 5)
     // If player gives up, player response is thus valid, prompt different text based off class
     else if (playerInput == "sacrifice")
     {
+        playerHasSacrificed = true;
         roomCount = 666;
     }
     // If player input is invalid, end the game
@@ -319,7 +324,11 @@ if (roomCount == 666)
         {
             Console.WriteLine("You sacrifice your life for no god...");
         }
-        else
+        else if (playerCanFlee == false && playerHasSacrificed == false)
+        {
+            Console.WriteLine($"{playerName} trips and crack's their skull on a sharp rock.");
+        }
+        else if (playerHasSacrificed == true)
         {
             Console.WriteLine($"You sacrifice your life, but your god is not pleased...\n{classBoss} claims your soul instead...");
         }
