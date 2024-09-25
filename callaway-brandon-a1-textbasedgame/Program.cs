@@ -27,7 +27,7 @@ string classBoss = "";
 int roomCount;
 
 // Ask for player name
-Console.WriteLine("\nSpeak your name stranger...");
+Console.WriteLine("Speak your name stranger...");
 playerName = Console.ReadLine();
 
 // Tell player class information and ask player to choose
