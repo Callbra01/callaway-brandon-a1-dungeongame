@@ -94,7 +94,7 @@ if (roomCount == 1)
 
     // Print game intro, along with first attack sequence
     Console.WriteLine($"{playerName} the {playerClass}, after a long and arduous journey, has found themselves at the entrance of the Dungeon of Cupidity...");
-    Console.WriteLine($"A {opponentName} blocks the way, what will you do? \"attack\", \"flee\", or \"sacrifice?\"");
+    Console.WriteLine($"A {opponentName} blocks the way, what will you do? \"attack\", \"flee\", or \"sacrifice\"");
     playerInput = Console.ReadLine();
 
     // if player attacks, inform player of relevant information
